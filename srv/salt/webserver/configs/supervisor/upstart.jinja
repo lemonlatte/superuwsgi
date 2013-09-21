@@ -1,0 +1,10 @@
+{% set supervisor = pillar.get('supervisor', {}) -%}
+# Ubuntu upstart file at /etc/init/supervisord.conf
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+script
+  `which supervisord` -c {{ supervisor.get('config_file', '/etc/supervisord.conf') }}
+end script
+
