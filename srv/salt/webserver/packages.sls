@@ -8,7 +8,28 @@ base-pkgs:
       - libevent-dev
 
 nginx:
-  pkg.installed
+  pkg:
+    - installed
+  file:
+    - managed
+    - name: /etc/nginx/sites-available/site-uwsgi
+    - template: jinja
+    - source: salt://webserver/configs/nginx/site-uwsgi
+    - require:
+      - pkg: nginx
+  # TODO: Write a module for ensite
+  cmd:
+    - run
+    - name: ln -s /etc/nginx/sites-available/site-uwsgi /etc/nginx/sites-enabled
+    - unless: test -f /etc/nginx/site-enabled
+    - require:
+      - file: nginx
+
+  service:
+    - running
+    - restart: True
+    - watch:
+      - cmd: nginx
 
 supervisor:
   pip.installed:
@@ -36,7 +57,6 @@ supervisor:
   service:
     - running
     - restart: True
-    - stop: True
     - watch:
       - file: supervisor
       - cmd: supervisor
@@ -50,4 +70,3 @@ uwsgi:
   pip.installed:
     - require:
       - pkg: base-pkgs
-
