@@ -21,7 +21,7 @@ nginx:
   cmd:
     - run
     - name: ln -s /etc/nginx/sites-available/site-uwsgi /etc/nginx/sites-enabled
-    - unless: test -f /etc/nginx/site-enabled
+    - unless: test -f /etc/nginx/sites-enabled/site-uwsgi
     - require:
       - file: nginx
 
