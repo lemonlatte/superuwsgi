@@ -37,6 +37,7 @@ supervisor:
 
   service:
     - running
+    - enable: True
     - restart: True
     - require:
       - pip: supervisor

@@ -2,7 +2,7 @@ server {
         listen {{ pillar.get("hostname", "0.0.0.0") }}:80;
 
         location / {
-                uwsgi_pass unix:///tmp/uwsgi.sock;
+                uwsgi_pass unix:///tmp/uwsgi-{{ app_name }}.sock;
                 include uwsgi_params;
         }
 }
