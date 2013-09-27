@@ -1,9 +1,9 @@
 server {
-        listen {{ pillar.get("hostname", "0.0.0.0") }}:80;
+        listen {{ pillar.get("hostname", "0.0.0.0") }}:{{ pillar.get("port", "8000") }};
 
         location / {
                 # uwsgi_pass unix:///tmp/uwsgi-{{ app_name }}.sock;
-                uwsgi_pass 127.0.0.1:3030
+                uwsgi_pass 127.0.0.1:3030;
                 include uwsgi_params;
         }
 }

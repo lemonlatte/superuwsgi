@@ -1,6 +1,6 @@
 [program:{{ app_name }}]
-command=/usr/local/bin/uwsgi {{ app_root }}/uwsgi.ini
-directory={{ app_root }}
+command=/usr/local/bin/uwsgi {{ project_root }}/uwsgi.ini
+directory={{ project_root }}
 stopsignal=QUIT
 redirect_stderr=true
 stdout_logfile={{ app_log_folder }}/uwsgi-{{ app_name }}.log

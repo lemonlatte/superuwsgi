@@ -4,7 +4,7 @@
 # load project module
 pythonpath = .
 home = ./.venv
-module = wsgi:application
+module = {{ wsgi_module }}
 # Setup socket
 # socket = /tmp/uwsgi-{{ app_name }}.sock
 socket = :3030
