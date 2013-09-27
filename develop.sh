@@ -5,5 +5,5 @@ if [ -d /srv ]; then
     rm -rf /srv
 fi
 ln -s `pwd`/srv /srv
-# salt-call state.highstate --local
-salt-call state.sls webapp.uwsgi --local
+salt-call state.highstate --local
+# salt-call state.sls webapp.uwsgi --local
