@@ -1,6 +1,7 @@
 #!/bin/sh
 
-curl -L http://bootstrap.saltstack.org | sudo sh -s -- git develop
+apt-get -y install python-software-properties
+curl -L http://bootstrap.saltstack.org | sudo sh -s -- git 5324d6
 if [ -d /srv ]; then
     rm -rf /srv
 fi
