@@ -4,7 +4,7 @@
     - user: root
     - group: root
     - mode: 440
-    - source: salt://webserver/configs/supervisor/upstart.jinja
+    - source: salt://webserver/templates/supervisor/upstart.jinja
     - require:
       - pip: supervisor
 
@@ -24,7 +24,7 @@
 
   file.append:
     - sources:
-      - salt://webserver/configs/supervisor/include.tmpl
+      - salt://webserver/templates/supervisor/include.jinja
     - require:
       - cmd: /etc/supervisord.conf
       - file: /etc/supervisord/conf.d
