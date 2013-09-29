@@ -1,4 +1,4 @@
-{% set mongodb_version = pillar.get("mongodb_version") %}
+{% set mongodb = pillar.get("mongodb_10gen", {}) %}
 
 10gen-repo:
   pkgrepo.managed:
@@ -11,6 +11,6 @@ mongodb-10gen:
   pkg.installed:
     - require:
       - pkgrepo: 10gen-repo
-{% if mongodb_version %}
-    - version: {{ mongodb_version }}
+{% if "version" in mongodb %}
+    - version: {{ mongodb.version }}
 {% endif %}
