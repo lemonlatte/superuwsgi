@@ -4,6 +4,8 @@
   file.replace:
     - pattern: user www-data;
     - repl: user {{ user }};
+  require:
+    - pkg: nginx
 
 /etc/nginx/sites-enabled/default:
   file:
@@ -12,9 +14,9 @@
 nginx:
   pkg:
     - installed
-  require:
-    - file: /etc/nginx/nginx.conf
   service:
     - running
     - enable: True
     - restart: True
+    - watch:
+      - file: /etc/nginx/nginx.conf
