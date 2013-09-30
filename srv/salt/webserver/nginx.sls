@@ -4,8 +4,8 @@
   file.replace:
     - pattern: user www-data;
     - repl: user {{ user }};
-  require:
-    - pkg: nginx
+    - require:
+      - pkg: nginx
 
 /etc/nginx/sites-enabled/default:
   file:

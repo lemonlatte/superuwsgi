@@ -70,6 +70,7 @@ app_supervisor:
     - template: jinja
     - source: salt://webapp/templates/app-supervisor.jinja
     - defaults:
+      app_user: {{ app_user }}
       app_name: {{ app_name }}
       project_root: {{ project_root }}
       app_log_folder: {{ app_log_folder }}

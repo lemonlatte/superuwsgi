@@ -1,6 +1,9 @@
 [program:{{ app_name }}]
 command={{ command }}
 directory={{ project_root }}
+{% if app_user %}
+user={{ app_user }}
+{% endif %}
 stopsignal=QUIT
 redirect_stderr=true
 stdout_logfile={{ app_log_folder }}/uwsgi-{{ app_name }}.log
