@@ -1,4 +1,4 @@
 include:
   - webserver.packages
-  - webserver.supervisor
+  - supervisor
   - webserver.nginx

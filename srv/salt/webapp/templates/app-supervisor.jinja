@@ -1,7 +1,2 @@
-[program:{{ app_name }}]
-command=/usr/local/bin/uwsgi {{ project_root }}/uwsgi.ini
-directory={{ project_root }}
-stopsignal=QUIT
-redirect_stderr=true
-stdout_logfile={{ app_log_folder }}/uwsgi-{{ app_name }}.log
-stdout_logfile_maxbytes=50MB
+{% set command = "/usr/local/bin/uwsgi %s/uwsgi.ini" % project_root %}
+{% include "supervisor/templates/app.jinja" with context %}
